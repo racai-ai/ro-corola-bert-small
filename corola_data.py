@@ -3,7 +3,7 @@ from datasets import Dataset, Features, Value
 
 
 _corola_sentences_folder = os.path.join(
-    '..', 'ro-wordpiece-tokenizer', 'corola-sentences2')
+    '..', 'ro-wordpiece-tokenizer', 'corola-sentences-test')
 
 
 def corola_sentences_generator():

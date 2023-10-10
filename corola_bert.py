@@ -107,14 +107,16 @@ if __name__ == '__main__':
     # 4. Train
     training_args = TrainingArguments(
         output_dir="model",
-        evaluation_strategy="epoch",
+        evaluation_strategy="steps",
+        eval_steps=5000,
+        save_strategy="steps",
+        save_steps=1000,
         learning_rate=2e-5,
-        num_train_epochs=3,
+        num_train_epochs=1,
         weight_decay=0.01,
-        per_device_train_batch_size=2,
-        per_device_eval_batch_size=2,
-        push_to_hub=False,
-        use_cpu=False
+        per_device_train_batch_size=8,
+        per_device_eval_batch_size=8,
+        push_to_hub=False
     )
 
     trainer = Trainer(
