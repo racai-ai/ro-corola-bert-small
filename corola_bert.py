@@ -88,12 +88,14 @@ if __name__ == '__main__':
     # 1. Tokenized the CoRoLa dataset
     tokenized_corola = corola.map(tokenization_function,
                                   batched=True, num_proc=6,
-                                  remove_columns=['text'])
+                                  remove_columns=['text'],
+                                  new_fingerprint="tokenization_function_v1")
     
     # 2. If an example has more than _bert_input_size tokens,
     # create consecutive blocks of tokens of _bert_input_size length.
     lm_corola = tokenized_corola.map(text_block_function,
-                                     batched=True, num_proc=6)
+                                     batched=True, num_proc=6,
+                                     new_fingerprint="text_block_function_v1")
     lm_train_ready = lm_corola.train_test_split(test_size=0.1)
 
     # 3. Instantitate BERT mini    
