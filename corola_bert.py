@@ -77,6 +77,13 @@ def check_vocabulary() -> bool:
     return good_to_go
 
 
+# Actual runtime parameters:
+# num_proc=30
+# per_device_train_batch_size=16
+# per_device_eval_batch_size=16
+# test_size=0.001
+# GPU 0: NVIDIA Quadro RTX 8000, 48601 MiB of RAM
+# 1 epoch in approx. 30 days
 if __name__ == '__main__':
     print(f'Running with BERT input size of [{_bert_input_size}]', file=sys.stderr, flush=True)
     print(f'Running with vocab.txt from [{_corola_wordpiece_vocab}]', file=sys.stderr, flush=True)
@@ -110,9 +117,10 @@ if __name__ == '__main__':
     training_args = TrainingArguments(
         output_dir="model",
         evaluation_strategy="steps",
-        eval_steps=5000,
+        eval_steps=10000,
         save_strategy="steps",
         save_steps=1000,
+        save_total_limit=10,
         learning_rate=2e-5,
         num_train_epochs=1,
         weight_decay=0.01,

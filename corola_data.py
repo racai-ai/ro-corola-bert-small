@@ -2,8 +2,9 @@ import os
 from datasets import Dataset, Features, Value
 
 
-_corola_sentences_folder = os.path.join(
-    '..', 'ro-wordpiece-tokenizer', 'corola-sentences-test')
+# Each text file from this folder contains 100K sentences,
+# with one sentence per line.
+_corola_sentences_folder = 'corola-sentences'
 
 
 def corola_sentences_generator():
