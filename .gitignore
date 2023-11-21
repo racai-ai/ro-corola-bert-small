@@ -3,3 +3,8 @@ __pycache__
 corola_cache/
 corola-sentences/
 model/checkpoint*
+data0/
+data2/
+data3/
+data4/
+data5/
